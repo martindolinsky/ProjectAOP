@@ -1,7 +1,8 @@
-package sk.itsovy.dolinsky;
+package sk.itsovy.dolinsky.expressions;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import sk.itsovy.dolinsky.dao.AccountDAO;
+import sk.itsovy.dolinsky.expressions.dao.AccountDAO;
+import sk.itsovy.dolinsky.expressions.dao.MembershipDAO;
 
 /**
  * @author Martin Dolinsky
@@ -13,8 +14,14 @@ public class MainDemoApp {
 				new AnnotationConfigApplicationContext(DemoConfig.class);
 
 		AccountDAO accountDAO = context.getBean("accountDAO", AccountDAO.class);
+		MembershipDAO membershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
 
-		accountDAO.addAccount();
+		Account account = new Account();
+		accountDAO.addAccount(account, true);
+		accountDAO.doWork();
+
+		membershipDAO.addSillyMember();
+		membershipDAO.goToSleep();
 
 		context.close();
 	}
