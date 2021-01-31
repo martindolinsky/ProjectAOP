@@ -1,4 +1,4 @@
-package sk.itsovy.dolinsky.pointcutorderaspects.aspect;
+package sk.itsovy.dolinsky.afterreturning.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Order(1)
 public class MyCloudLogasyncAspect {
 
-	@Before("sk.itsovy.dolinsky.pointcutorderaspects.aspect.LuvAopExpressions.forDaoPackageNoGetterSetter()")
+	@Before("sk.itsovy.dolinsky.afterreturning.aspect.LuvAopExpressions.forDaoPackageNoGetterSetter()")
 	public void logToCloudAsync() {
 		System.out.println("\n======>>> Logging to Cloud in async fashion");
 	}
